@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwipeBook.IntroPage"
+             BackgroundColor="{AppThemeBinding Light=#F5F0E8, Dark=#1C1816}">
+
+    <Grid RowDefinitions="*,Auto" Padding="24,16,24,24" RowSpacing="12">
+        <ScrollView>
+            <VerticalStackLayout Spacing="14" Padding="0,24,0,8">
+
+                <Label Text="📚" FontSize="64" HorizontalOptions="Center" />
+                <Label Text="SwipeBook" FontSize="34" FontAttributes="Bold" HorizontalOptions="Center"
+                       TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                <Label Text="Знаходь книжки, які тобі справді сподобаються"
+                       FontSize="16" HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+
+                <Label Text="Як це працює" FontSize="20" FontAttributes="Bold" Margin="0,14,0,0"
+                       TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                        StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="14">
+                    <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                        <Label Text="👉" FontSize="28" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                            <Label Text="Свайпай" FontSize="17" FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                            <Label Text="Праворуч (♥), якщо книжка подобається, ліворуч (✕), якщо ні. Можна користуватися й кнопками внизу."
+                                   FontSize="14" TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                        StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="14">
+                    <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                        <Label Text="✨" FontSize="28" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                            <Label Text="Отримуй рекомендації" FontSize="17" FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                            <Label Text="Що більше ти оцінюєш, то точніше ми добираємо книжки за жанрами. Під кожною карткою написано, чому вона тобі запропонована."
+                                   FontSize="14" TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                        StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="14">
+                    <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                        <Label Text="🔍" FontSize="28" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                            <Label Text="Шукай у каталозі" FontSize="17" FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                            <Label Text="Знаходь книжки за назвою, автором чи жанром. На сторінці книжки познач: «Хочу прочитати», «Читаю» або «Прочитано»."
+                                   FontSize="14" TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                        StrokeShape="RoundRectangle 16" StrokeThickness="0" Padding="14">
+                    <Grid ColumnDefinitions="44,*" ColumnSpacing="10">
+                        <Label Text="👤" FontSize="28" VerticalOptions="Center" />
+                        <VerticalStackLayout Grid.Column="1" Spacing="2">
+                            <Label Text="Стеж за своїм профілем" FontSize="17" FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                            <Label Text="Дивись статистику, улюблений жанр і список вподобаних книжок. Кнопка 🌓 угорі перемикає світлу й темну тему."
+                                   FontSize="14" TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button x:Name="StartButton" Grid.Row="1" Text="Почати" FontSize="18" FontAttributes="Bold"
+                HeightRequest="54" CornerRadius="27"
+                BackgroundColor="#B5651D" TextColor="White" Clicked="OnStartClicked" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:SwipeBook.Models"
+             x:Class="SwipeBook.ShelvesPage"
+             Title="Мої полиці"
+             BackgroundColor="{AppThemeBinding Light=#F5F0E8, Dark=#1C1816}">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14">
+            <Button Text="＋ Нова полиця" Clicked="OnNewShelfClicked"
+                    BackgroundColor="#B5651D" TextColor="White" CornerRadius="20" />
+            <Label x:Name="EmptyLabel" HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+
+            <VerticalStackLayout x:Name="ShelvesHost" Spacing="14">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:ShelfView">
+                        <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                                StrokeShape="RoundRectangle 16"
+                                Stroke="{AppThemeBinding Light=#DDD, Dark=#3D3631}" Padding="14">
+                            <VerticalStackLayout Spacing="8">
+                                <Grid ColumnDefinitions="*,Auto">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                                        <Label Text="{Binding CountText}" FontSize="13"
+                                               TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                                    </VerticalStackLayout>
+                                    <Button Grid.Column="1" Text="🗑" FontSize="18"
+                                            BackgroundColor="Transparent" Clicked="OnDeleteShelfClicked" />
+                                </Grid>
+                                <VerticalStackLayout Spacing="6"
+                                                     BindableLayout.ItemsSource="{Binding Books}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate x:DataType="models:BookListItem">
+                                            <Label Text="{Binding Title}" FontSize="16" TextColor="#B5651D">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnBookTapped" />
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

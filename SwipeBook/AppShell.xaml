@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SwipeBook.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SwipeBook"
+    Title="SwipeBook"
+    Shell.BackgroundColor="{AppThemeBinding Light=#F5F0E8, Dark=#1C1816}"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+    Shell.TabBarTitleColor="#B5651D"
+    Shell.TabBarUnselectedColor="#999">
+
+    <TabBar>
+        <ShellContent
+            Title="Свайп"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+
+        <ShellContent
+            Title="Профіль"
+            ContentTemplate="{DataTemplate local:LikedPage}"
+            Route="LikedPage" />
+
+        <ShellContent
+            Title="Каталог"
+            ContentTemplate="{DataTemplate local:CatalogPage}"
+            Route="CatalogPage" />
+    </TabBar>
+
+</Shell>

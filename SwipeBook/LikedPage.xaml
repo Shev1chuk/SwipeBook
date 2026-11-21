@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:SwipeBook.Models"
+             x:Class="SwipeBook.LikedPage"
+             Title="Профіль"
+             BackgroundColor="{AppThemeBinding Light=#F5F0E8, Dark=#1C1816}">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="14">
+
+            <Label Text="Профіль читача" FontSize="26" FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="🌙 Темна тема" FontSize="16" VerticalOptions="Center"
+                       TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                <Switch x:Name="ThemeSwitch" Grid.Column="1" OnColor="#B5651D"
+                        Toggled="OnThemeToggled" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                <Border Padding="10" StrokeShape="RoundRectangle 14"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                        Stroke="{AppThemeBinding Light=#DDD, Dark=#3D3631}">
+                    <VerticalStackLayout>
+                        <Label x:Name="RatedValue" FontSize="22" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" TextColor="#B5651D" />
+                        <Label Text="Оцінено" FontSize="12" HorizontalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1" Padding="10" StrokeShape="RoundRectangle 14"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                        Stroke="{AppThemeBinding Light=#DDD, Dark=#3D3631}">
+                    <VerticalStackLayout>
+                        <Label x:Name="LikePercentValue" FontSize="22" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" TextColor="#B5651D" />
+                        <Label Text="Подобається" FontSize="12" HorizontalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="2" Padding="10" StrokeShape="RoundRectangle 14"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                        Stroke="{AppThemeBinding Light=#DDD, Dark=#3D3631}">
+                    <VerticalStackLayout>
+                        <Label x:Name="ReadThisYearValue" FontSize="22" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" TextColor="#B5651D" />
+                        <Label Text="Прочитано цьогоріч" FontSize="12" HorizontalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <HorizontalStackLayout Spacing="6">
+                <Label Text="Улюблений жанр:" FontSize="15"
+                       TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                <Label x:Name="FavGenreValue" FontSize="15" FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+            </HorizontalStackLayout>
+
+            <Label x:Name="StatusCountsLabel" FontSize="13"
+                   TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+
+            <Label Text="Жанри, які тобі подобаються" FontSize="18" FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+            <VerticalStackLayout x:Name="GenreChart" Spacing="8" />
+
+            <Button Text="📚 Мої полиці" Clicked="OnShelvesClicked" CornerRadius="20"
+                    BackgroundColor="Transparent" BorderWidth="1" BorderColor="#B5651D"
+                    TextColor="#B5651D" />
+
+            <Picker x:Name="FilterPicker" Title="Показати"
+                    SelectedIndexChanged="OnFilterChanged"
+                    TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}"
+                    TitleColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+
+            <Label x:Name="EmptyLabel" HorizontalTextAlignment="Center" FontSize="14"
+                   TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+
+            <VerticalStackLayout x:Name="BooksList" Spacing="10">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:BookListItem">
+                        <Border Padding="12" StrokeShape="RoundRectangle 14"
+                                BackgroundColor="{AppThemeBinding Light=White, Dark=#2A2522}"
+                                Stroke="{AppThemeBinding Light=#DDD, Dark=#3D3631}">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBookTapped" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="56,*" ColumnSpacing="12">
+                                <Image Source="{Binding Cover}" WidthRequest="56" HeightRequest="80"
+                                       Aspect="AspectFill" />
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                    <Label Text="{Binding Title}" FontSize="16" FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#3B2F2F, Dark=#F2E9DD}" />
+                                    <Label Text="{Binding Author}" FontSize="13"
+                                           TextColor="{AppThemeBinding Light=#777, Dark=#B3A99C}" />
+                                    <Label Text="{Binding StatusText}" FontSize="12" TextColor="#B5651D" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <Button Text="Скинути свайпи" Clicked="OnResetClicked" CornerRadius="20"
+                    BackgroundColor="Transparent" BorderWidth="1" BorderColor="#B5651D"
+                    TextColor="#B5651D" />
+            <Button Text="Показати вступ" Clicked="OnIntroClicked" CornerRadius="20"
+                    BackgroundColor="Transparent" TextColor="#B5651D" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
